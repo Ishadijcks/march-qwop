@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
     public Transform target;
     public Transform finish;
-    
 
     public bool followTarget = false;
 
@@ -28,7 +24,8 @@ public class CameraController : MonoBehaviour
 
         while (transform.position.x - target.position.x > cameraSpeed)
         {
-            transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y,
+                transform.position.z);
             yield return null;
         }
 

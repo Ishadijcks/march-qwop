@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -12,9 +13,9 @@ public class Game : MonoBehaviour
 
 
     public bool isOver;
-    
+
     public event Action OnGameOver;
-    
+
     public GameObject gameOverScreen;
     public GameObject gameWonScreen;
 
@@ -40,17 +41,19 @@ public class Game : MonoBehaviour
         {
             return;
         }
+
         isOver = true;
         gameOverScreen.SetActive(true);
         OnGameOver?.Invoke();
     }
-    
+
     public void Win()
     {
         if (isOver)
         {
             return;
         }
+
         isOver = true;
         gameWonScreen.SetActive(true);
         OnGameOver?.Invoke();
@@ -64,5 +67,8 @@ public class Game : MonoBehaviour
     }
 
 
-    
+    public void Restart()
+    {
+        SceneManager.LoadScene("Game");
+    }
 }

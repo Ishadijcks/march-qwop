@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public Transform finish;
-    
+
     public float upperLegTorque;
     public float lowerLegTorque;
 
@@ -32,9 +27,9 @@ public class PlayerController : MonoBehaviour
 
     public Sprite buttonUp;
     public Sprite buttonDown;
-    
-    private Color pressedColor = new Color(0.18f,0.70f,0.93f);
-    
+
+    private Color pressedColor = new Color(0.18f, 0.70f, 0.93f);
+
     public bool[] buttonsDown = {false, false, false, false};
     private bool canMove;
 
@@ -53,18 +48,18 @@ public class PlayerController : MonoBehaviour
         oMotor.MoveRotation(10f);
         pMotor.MoveRotation(10f);
     }
-    
+
     void Update()
     {
         // If the finish line is crossed, we win.
-        if (transform.position.x >= finish.transform.position.x - finish.transform.localScale.x/2f)
+        if (transform.position.x >= finish.transform.position.x - finish.transform.localScale.x / 2f)
         {
             game.Win();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Game");
+            game.Restart();
         }
 
         if (!canMove)
@@ -139,7 +134,7 @@ public class PlayerController : MonoBehaviour
             ClearColor(pImage);
         }
     }
-    
+
     private void SetColor(Image image)
     {
         image.color = pressedColor;
@@ -160,6 +155,7 @@ public class PlayerController : MonoBehaviour
         {
             game.Lose();
         }
+
         if (other.gameObject.CompareTag("Finish"))
         {
             game.Win();
