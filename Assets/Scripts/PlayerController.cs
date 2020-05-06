@@ -56,14 +56,11 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        // If the finish line is crossed, we win.
         if (transform.position.x >= finish.transform.position.x - finish.transform.localScale.x/2f)
         {
             game.Win();
         }
-        qPressed = Input.GetKey(KeyCode.Q) || buttonsDown[0];
-        wPressed = Input.GetKey(KeyCode.W) || buttonsDown[1];
-        oPressed = Input.GetKey(KeyCode.O) || buttonsDown[2];
-        pPressed = Input.GetKey(KeyCode.P) || buttonsDown[3];
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -81,9 +78,15 @@ public class PlayerController : MonoBehaviour
             ClearColor(wImage);
             ClearColor(oImage);
             ClearColor(pImage);
-
             return;
         }
+
+        // Ugly workaround to allow buttons on screen as well as keyboard to work.
+        qPressed = Input.GetKey(KeyCode.Q) || buttonsDown[0];
+        wPressed = Input.GetKey(KeyCode.W) || buttonsDown[1];
+        oPressed = Input.GetKey(KeyCode.O) || buttonsDown[2];
+        pPressed = Input.GetKey(KeyCode.P) || buttonsDown[3];
+
 
         if (qPressed)
         {
@@ -98,6 +101,11 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        UpdateMotorMovement();
+    }
+
+    private void UpdateMotorMovement()
+    {
         if (wPressed)
         {
             SetColor(wImage);
@@ -131,7 +139,7 @@ public class PlayerController : MonoBehaviour
             ClearColor(pImage);
         }
     }
-
+    
     private void SetColor(Image image)
     {
         image.color = pressedColor;

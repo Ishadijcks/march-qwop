@@ -13,7 +13,7 @@ public class Game : MonoBehaviour
 
     public bool isOver;
     
-    public event System.Action OnGameOver;
+    public event Action OnGameOver;
     
     public GameObject gameOverScreen;
     public GameObject gameWonScreen;
