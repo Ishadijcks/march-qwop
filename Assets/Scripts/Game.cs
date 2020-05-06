@@ -8,7 +8,7 @@ public class Game : MonoBehaviour
     public static bool firstTime = true;
 
     public PlayerController player;
-    public CameraController camera;
+    public CameraController mainCamera;
     public ScoreKeeper score;
 
 
@@ -25,7 +25,7 @@ public class Game : MonoBehaviour
         {
             player.Go();
             score.Go();
-            camera.followTarget = true;
+            mainCamera.followTarget = true;
         }
         else
         {
@@ -61,7 +61,7 @@ public class Game : MonoBehaviour
 
     public IEnumerator StartUpRoutine()
     {
-        yield return StartCoroutine(camera.MoveCameraFromFinishToPlayer());
+        yield return StartCoroutine(mainCamera.MoveCameraFromFinishToPlayer());
         player.Go();
         score.Go();
     }

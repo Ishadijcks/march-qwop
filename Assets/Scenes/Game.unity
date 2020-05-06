@@ -4921,7 +4921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1870785920}
-  camera: {fileID: 519420030}
+  mainCamera: {fileID: 519420030}
   score: {fileID: 2078671664}
   isOver: 0
   gameOverScreen: {fileID: 1972684030}
